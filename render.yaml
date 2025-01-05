@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: meta-link-server
+    runtime: node
+    autoDeploy: false
+    buildCommand: npm install & npm run build
+    startCommand: node dist/app.js
