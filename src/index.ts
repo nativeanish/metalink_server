@@ -6,6 +6,7 @@ import dotenv from "dotenv";
 import registerSubdomainRouter from "./routers/register_subdomain";
 import check_subdomainRouter from "./routers/check_subdomain";
 import register_clickRouter from "./routers/register_click";
+import serverless from "serverless-http";
 dotenv.config();
 
 validateEnv(["NODE_ENV", "KEY", "REDIS_URL", "REDIS_TOKEN"]);
@@ -36,7 +37,7 @@ app.use((err: Error, _req: Request, res: Response, _next: Function) => {
 app.listen(process.env.PORT || 4000, () => {
   console.log(`Server is running at ${process.env.PORT || 4000} port`);
 });
-
+export const handler = serverless(app);
 function validateEnv(requiredEnvVars: string[]) {
   const missingVars = requiredEnvVars.filter(
     (varName) => !process.env[varName]
