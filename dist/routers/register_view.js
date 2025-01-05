@@ -32,7 +32,7 @@ const validateRequest = (req, res, next) => {
     next();
 };
 const register_viewRouter = (0, express_1.Router)();
-register_viewRouter.post("/register_view", validate, validateRequest, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+register_viewRouter.post("/", validate, validateRequest, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const ip = req.ip;
     const { id, pageId, date, browser, os, timezone, loadtime, name, wallet } = req.body;
     try {

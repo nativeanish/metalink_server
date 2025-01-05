@@ -41,7 +41,7 @@ const validateRequest = (
 const register_viewRouter = Router();
 
 register_viewRouter.post(
-  "/register_view",
+  "/",
   validate,
   validateRequest,
   async (req: Request<{}, {}, State>, res: Response) => {

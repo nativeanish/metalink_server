@@ -29,7 +29,7 @@ const validateRequest = (
 const registerSubdomainRouter = Router();
 
 registerSubdomainRouter.post(
-  "/register",
+  "/",
   validate,
   validateRequest,
   async (req: Request<{}, {}, State>, res: Response) => {

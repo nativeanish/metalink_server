@@ -24,7 +24,7 @@ const validateRequest = (
 const check_subdomainRouter = Router();
 
 check_subdomainRouter.post(
-  "/check",
+  "/",
   validate,
   validateRequest,
   async (req: Request<{}, {}, State>, res: Response) => {

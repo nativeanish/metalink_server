@@ -29,7 +29,7 @@ const validateRequest = (req, res, next) => {
     next();
 };
 const registerSubdomainRouter = (0, express_1.Router)();
-registerSubdomainRouter.post("/register", validate, validateRequest, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+registerSubdomainRouter.post("/", validate, validateRequest, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const subdomain = req.body.subdomain;
     const id = req.body.id;
     if (subdomain === "@") {

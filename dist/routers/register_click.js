@@ -28,7 +28,7 @@ const validateRequest = (req, res, next) => {
     next();
 };
 const register_clickRouter = (0, express_1.Router)();
-register_clickRouter.post("/register_view", validate, validateRequest, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+register_clickRouter.post("/", validate, validateRequest, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id, viewId, date, name } = req.body;
     try {
         const key = JSON.parse(process.env.KEY || "");

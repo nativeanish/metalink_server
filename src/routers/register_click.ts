@@ -32,7 +32,7 @@ const validateRequest = (
 const register_clickRouter = Router();
 
 register_clickRouter.post(
-  "/register_view",
+  "/",
   validate,
   validateRequest,
   async (req: Request<{}, {}, State>, res: Response) => {

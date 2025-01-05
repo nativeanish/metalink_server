@@ -25,7 +25,7 @@ const validateRequest = (req, res, next) => {
     next();
 };
 const check_subdomainRouter = (0, express_1.Router)();
-check_subdomainRouter.post("/check", validate, validateRequest, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+check_subdomainRouter.post("/", validate, validateRequest, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const subdomain = req.body.subdomain;
     if (subdomain === "@") {
         res
