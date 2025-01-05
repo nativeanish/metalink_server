@@ -21,7 +21,7 @@ else if (process.env.NODE_ENV === "production") {
     app.use((0, morgan_1.default)("combined"));
 }
 app.use((0, cors_1.default)());
-app.use(express_1.default.urlencoded({ extended: true }));
+app.use(express_1.default.json());
 app.get("/", (_req, res) => {
     res.status(200).send("Ping Pong");
 });

@@ -18,7 +18,7 @@ if (process.env.NODE_ENV === "development") {
   app.use(morgan("combined"));
 }
 app.use(cors());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.get("/", (_req: Request, res: Response) => {
   res.status(200).send("Ping Pong");
