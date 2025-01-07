@@ -22,6 +22,7 @@ const validate = [
     (0, express_validator_1.body)("timezone").notEmpty().isString(),
     (0, express_validator_1.body)("loadtime").notEmpty().isString(),
     (0, express_validator_1.body)("name").notEmpty().isString(),
+    (0, express_validator_1.body)("ip").notEmpty().isString(),
 ];
 const validateRequest = (req, res, next) => {
     const errors = (0, express_validator_1.validationResult)(req);
@@ -33,8 +34,7 @@ const validateRequest = (req, res, next) => {
 };
 const register_viewRouter = (0, express_1.Router)();
 register_viewRouter.post("/", validate, validateRequest, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const ip = req.ip;
-    const { id, pageId, date, browser, os, timezone, loadtime, name, wallet } = req.body;
+    const { id, pageId, date, browser, os, timezone, loadtime, name, wallet, ip, } = req.body;
     try {
         const key = JSON.parse(process.env.KEY || "");
         const transactionId = yield (0, aoconnect_1.message)({
@@ -67,7 +67,7 @@ register_viewRouter.post("/", validate, validateRequest, (req, res) => __awaiter
                 },
                 {
                     name: "ip",
-                    value: ip ? ip : "localhost",
+                    value: ip,
                 },
                 {
                     name: "timezone",

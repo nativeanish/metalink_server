@@ -12,6 +12,7 @@ interface State {
   loadtime: string;
   name: string;
   wallet?: string;
+  ip: string;
 }
 
 const validate = [
@@ -23,6 +24,7 @@ const validate = [
   body("timezone").notEmpty().isString(),
   body("loadtime").notEmpty().isString(),
   body("name").notEmpty().isString(),
+  body("ip").notEmpty().isString(),
 ];
 
 const validateRequest = (
@@ -45,9 +47,18 @@ register_viewRouter.post(
   validate,
   validateRequest,
   async (req: Request<{}, {}, State>, res: Response) => {
-    const ip = req.ip;
-    const { id, pageId, date, browser, os, timezone, loadtime, name, wallet } =
-      req.body;
+    const {
+      id,
+      pageId,
+      date,
+      browser,
+      os,
+      timezone,
+      loadtime,
+      name,
+      wallet,
+      ip,
+    } = req.body;
     try {
       const key = JSON.parse(process.env.KEY || "");
       const transactionId = await message({
@@ -80,7 +91,7 @@ register_viewRouter.post(
           },
           {
             name: "ip",
-            value: ip ? ip : "localhost",
+            value: ip,
           },
           {
             name: "timezone",
