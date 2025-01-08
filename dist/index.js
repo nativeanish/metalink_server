@@ -12,7 +12,7 @@ const register_subdomain_1 = __importDefault(require("./routers/register_subdoma
 const check_subdomain_1 = __importDefault(require("./routers/check_subdomain"));
 const register_click_1 = __importDefault(require("./routers/register_click"));
 dotenv_1.default.config();
-validateEnv(["NODE_ENV", "KEY", "REDIS_URL", "REDIS_TOKEN"]);
+validateEnv(["NODE_ENV", "KEY"]);
 const app = (0, express_1.default)();
 if (process.env.NODE_ENV === "development") {
     app.use((0, morgan_1.default)("dev"));

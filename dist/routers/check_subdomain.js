@@ -8,13 +8,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const express_validator_1 = require("express-validator");
-const redis_1 = __importDefault(require("../redis"));
 const validate = [(0, express_validator_1.body)("subdomain").notEmpty().isString()];
 const validateRequest = (req, res, next) => {
     const errors = (0, express_validator_1.validationResult)(req);
@@ -35,11 +31,6 @@ check_subdomainRouter.post("/", validate, validateRequest, (req, res) => __await
     }
     if (isAlphaNumeric(subdomain) === false) {
         res.status(200).send({ status: 0, data: "Invalid Id" });
-        return;
-    }
-    const check = yield redis_1.default.get(subdomain);
-    if (check || check === true) {
-        res.status(200).send({ status: 1, data: "Handle Already Register" });
         return;
     }
     res.status(200).send({ status: 0, data: "Handle Not Register" });

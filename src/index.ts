@@ -8,7 +8,7 @@ import check_subdomainRouter from "./routers/check_subdomain";
 import register_clickRouter from "./routers/register_click";
 dotenv.config();
 
-validateEnv(["NODE_ENV", "KEY", "REDIS_URL", "REDIS_TOKEN"]);
+validateEnv(["NODE_ENV", "KEY"]);
 
 const app = express();
 

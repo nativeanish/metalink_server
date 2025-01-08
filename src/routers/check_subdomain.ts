@@ -1,6 +1,5 @@
 import { Router, Request, Response, NextFunction } from "express";
 import { body, validationResult } from "express-validator";
-import redis from "../redis";
 
 interface State {
   subdomain: string;
@@ -37,11 +36,6 @@ check_subdomainRouter.post(
     }
     if (isAlphaNumeric(subdomain) === false) {
       res.status(200).send({ status: 0, data: "Invalid Id" });
-      return;
-    }
-    const check = await redis.get(subdomain);
-    if (check || check === true) {
-      res.status(200).send({ status: 1, data: "Handle Already Register" });
       return;
     }
     res.status(200).send({ status: 0, data: "Handle Not Register" });
